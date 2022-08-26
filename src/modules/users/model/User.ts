@@ -1,7 +1,14 @@
-import { v4 as uuidV4 } from "uuid";
+import { v4 } from "uuid";
 
-class User {
-  // Complete aqui
+export class User {
+  id?: string;
+  created_at: Date;
+  email: string;
+  name: string;
+
+  constructor() {
+    if (!this.id) {
+      this.id = v4();
+    }
+  }
 }
-
-export { User };
