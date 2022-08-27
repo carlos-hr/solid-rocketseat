@@ -24,7 +24,9 @@ export class UsersRepository implements IUsersRepository {
     Object.assign(user, {
       name,
       email,
+      admin: false,
       created_at: new Date(),
+      updated_at: new Date(),
     });
 
     console.log(user);
@@ -43,7 +45,13 @@ export class UsersRepository implements IUsersRepository {
   }
 
   turnAdmin(receivedUser: User): User {
-    // Complete aqui
+    const user = this.users.find((user) => user.id === receivedUser.id);
+
+    Object.assign(user, {
+      admin: true,
+    });
+
+    return user;
   }
 
   list(): User[] {
