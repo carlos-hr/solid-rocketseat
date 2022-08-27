@@ -22,14 +22,12 @@ export class UsersRepository implements IUsersRepository {
     const user = new User();
 
     Object.assign(user, {
-      name,
       email,
-      admin: false,
+      name,
       created_at: new Date(),
       updated_at: new Date(),
     });
 
-    console.log(user);
     this.users.push(user);
     return user;
   }
@@ -49,6 +47,7 @@ export class UsersRepository implements IUsersRepository {
 
     Object.assign(user, {
       admin: true,
+      updated_at: new Date(),
     });
 
     return user;
