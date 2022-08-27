@@ -1,7 +1,7 @@
 import { User } from "../../model/User";
 import { IUsersRepository, ICreateUserDTO } from "../IUsersRepository";
 
-class UsersRepository implements IUsersRepository {
+export class UsersRepository implements IUsersRepository {
   private users: User[];
 
   private static INSTANCE: UsersRepository;
@@ -27,16 +27,19 @@ class UsersRepository implements IUsersRepository {
       created_at: new Date(),
     });
 
+    console.log(user);
     this.users.push(user);
     return user;
   }
 
   findById(id: string): User | undefined {
-    // Complete aqui
+    const userById = this.users.find((user) => user.id === id);
+    return userById;
   }
 
   findByEmail(email: string): User | undefined {
-    // Complete aqui
+    const userByEmail = this.users.find((user) => user.email === email);
+    return userByEmail;
   }
 
   turnAdmin(receivedUser: User): User {
@@ -44,8 +47,6 @@ class UsersRepository implements IUsersRepository {
   }
 
   list(): User[] {
-    // Complete aqui
+    return this.users;
   }
 }
-
-export { UsersRepository };
