@@ -12,6 +12,9 @@ class ListAllUsersUseCase {
     const userById = this.usersRepository.findById(user_id);
 
     if (!userById) {
+      throw new Error("User not found");
+    }
+    if (!userById.admin) {
       throw new Error("User not authenticated.");
     }
 
